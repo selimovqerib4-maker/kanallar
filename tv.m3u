@@ -3,8 +3,8 @@
 https://a8.radyotelekom.com.tr:3232/stream/play.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/5jd1nmms/38876648-ico.png" group-title="SİNEMA/DİZİ KANALLARI",TELEON
 https://cdn-teleonchannels.yayin.com.tr/teleonchannels/teleonchannels/chunklist_w2028408927.m3u8
-#EXTINF:-1 tvg-logo="https://www.bikanal.com/frontend/img/logo.webp" group-title="SİNEMA/DİZİ KANALLARI",Bİ KANAL
-https://bikanal-live.ercdn.net/bikanal/bikanal.m3u8
+#EXTINF:-1
+
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/4yS5jp8R/69b468997c5a5-1773430937-removebg-preview.png" group-title="SİNEMA/DİZİ KANALLARI",TİVİ 6
 https://live.artidijitalmedya.com/artidijital_tivi6/tivi6/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/W3LFzchs/images-removebg-preview-(3).png" group-title="SİNEMA/DİZİ KANALLARI",DENİZ POSTASI TV
