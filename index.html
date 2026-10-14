@@ -1,1 +1,46 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TV</title><script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script><style>body{background:#000;color:#fff;margin:0;font-family:Arial}div{padding:14px;border-bottom:1px solid #222}#v{width:100%;height:240px;background:#111}</style></head><body><video id="v" controls></video><div id="list"></div><script>const M3U="https://cdn.statically.io/gh/selimovqerib4-maker/kanallar/main/983421348.m3u";async function y(){let t=await(await fetch(M3U+"?v="+Date.now())).text();let a=t.split("\n"),n="",L=document.getElementById("list");L.innerHTML="";a.forEach(l=>{if(l.startsWith("#EXTINF"))n=l.split(",").pop();else if(l.startsWith("http")){let u=l.trim(),d=document.createElement("div");d.textContent=n;d.onclick=()=>{let v=document.getElementById("v");if(Hls.isSupported()){let h=new Hls();h.loadSource(u);h.attachMedia(v);h.on(Hls.Events.MANIFEST_PARSED,()=>v.play())}else{v.src=u;v.play()}};L.appendChild(d)}})}y();setInterval(y,20000);</script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TV - 165 Kanal</title>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<style>
+body{background:#000;color:#fff;margin:0;font-family:Arial}
+#v{width:100%;height:240px;background:#111}
+.item{padding:14px;border-bottom:1px solid #222;cursor:pointer}
+.item:hover{background:#222}
+#say{padding:10px;background:#111;text-align:center}
+</style>
+</head>
+<body>
+<video id="v" controls autoplay playsinline></video>
+<div id="say">Yuklenir...</div>
+<div id="list"></div>
+<script>
+async function load(){
+ try{
+  let r=await fetch("./983421348.m3u?v="+Date.now());
+  let t=await r.text();
+  let lines=t.split("\n"),name="",L=document.getElementById("list"),c=0;
+  L.innerHTML="";
+  lines.forEach(l=>{
+   l=l.trim();
+   if(l.startsWith("#EXTINF")){name=l.split(",").pop();}
+   else if(l.startsWith("http")){c++;let u=l;let d=document.createElement("div");d.className="item";d.textContent=name||"Kanal "+c;
+    d.onclick=()=>{
+     let v=document.getElementById("v");
+     if(Hls.isSupported()){let h=new Hls();h.loadSource(u);h.attachMedia(v);h.on(Hls.Events.MANIFEST_PARSED,()=>v.play());}
+     else{v.src=u;v.play();}
+     window.scrollTo(0,0);
+    };
+    L.appendChild(d);
+   }
+  });
+  document.getElementById("say").innerText=c+" kanal tapildi - birine bas";
+ }catch(e){document.getElementById("say").innerText="Xeta: "+e.message;}
+}
+load();
+</script>
+</body>
+</html>
